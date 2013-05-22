@@ -27,8 +27,8 @@ function Hanoi(stories) {
 // };
 
 Hanoi.prototype.winCondition = function(){
-  arr1 = this.towers[2];
-  arr2 = range(0, this.stories+1);
+  var arr1 = this.towers[2];
+  var arr2 = range(0, this.stories+1);
   return !(arr1<arr2 || arr2<arr1);
 };
 
@@ -55,38 +55,34 @@ Hanoi.prototype.display = function() {
   console.log(this.towers);
 };
 
-Hanoi.prototype.getMove = function(div) {
+Hanoi.prototype.getMove = function() {
   var from = prompt("Choose a tower to take from");
   var to   = prompt("Choose a tower to place on");
 
-
-  if (!legalMove(from, to)) {
-    console.log("Illegal move!");
+  if (!this.legalMove(from, to)) {
+    alert("Illegal move!");
     return false;
   }
 
-  choice = [from, to];
+  var choice = [from, to];
   return choice;
 };
 
-Hanoi.prototype.userSetup = function() {
-  var stackHeight = window.prompt("How tall would you like to make the stack for your game? Remember, taller means harder!");
 
-  hanoi = new Hanoi(stackHeight);
-  hanoi.setup;
-};
+Hanoi.prototype.render = function() {
+  console.log("I'm rendering!");
+  // clear the board
+  for (var tow = 0; tow < 3; tow++) {
+    for (var row = 0; row < 5; row++) {
+      $("#tow"+tow+"row"+row).removeClass();
+      console.log("Tower"+tow + "Row"+row + " cleared");
+    }
+  }
 
-
-Hanoi.prototype.renderGame = function() {
 
 
   for (var i = 0; i < 3; i++) {
     for (var j = 0; j < this.towers[i].length; j++) {
-      $("#tow"+i+"row"+j).removeClass();
-      // see what's happening
-      console.log("tow: #tow"+i+"row"+j + "block: "+ this.towers[i][j]);
-      console.log(j)
-
       if (!!this.towers[i][j] || this.towers[i][j] === 0) {
         $("#tow"+i+"row"+j).addClass("block" + this.towers[i][j]);
 
@@ -95,9 +91,27 @@ Hanoi.prototype.renderGame = function() {
   }
 };
 
-Hanoi.prototype.gameLoop = function(game) {
-  game.console.log
-}
+Hanoi.prototype.playOneTurn = function() {
+  var choice = false;
+  while (choice === false) {
+    choice = this.getMove();
+  }
+
+  this.move(choice[0], choice[1]);
+  console.log(this.towers);
+};
+
+
+
+Hanoi.prototype.gameLoop = function() {
+  while (!this.winCondition()) {
+    this.render();
+    this.playOneTurn();
+    if (this.winCondition === true) {
+      $('h1').html("You've Won!");
+    }
+  }
+};
 
 
 
@@ -107,20 +121,7 @@ Hanoi.prototype.gameLoop = function(game) {
 
 $(document).ready(function() {
   h = new Hanoi(4);
-  // $('#tow0row0').addClass('block0');
-  // $('#tow0row1').addClass('block1');
-  // $('#tow0row2').addClass('block2');
-  // $('#tow0row3').addClass('block3');
-  // $('#tow0row4').addClass('block4');
-
-  // see if render works
-  h.renderGame();
-
-
-  // var from = prompt("Choose a tower to take from");
-  // var to   = prompt("Choose a tower to place on");
-  //
-  // choice = [from, to];
+  h.gameLoop();
 });
 
 
