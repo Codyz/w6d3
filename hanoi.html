@@ -1,0 +1,131 @@
+<html>
+<head>
+  <title>Towers Game</title>
+
+  <style type="text/css">
+
+  ul, li {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    height: 20px;
+    width: 148px;
+    right: 0px;
+    list-style: none;
+    border: 2px solid black;
+  }
+
+  .block0 {
+    margin: auto;
+    height: 20px;
+    width: 148px;
+    background-color: black;
+  }
+
+  .block1 {
+    margin: auto;
+    height: 20px;
+    width: 120px;
+    background-color: blue;
+  }
+
+  .block2 {
+    margin: auto;
+    height: 20px;
+    width: 90px;
+    background-color: red;
+  }
+
+  .block3 {
+    margin: auto;
+    height: 20px;
+    width: 60px;
+    background-color: purple;
+  }
+
+  .block4 {
+    margin: auto;
+    height: 20px;
+    width: 30px;
+    background-color: orange;
+  }
+
+  .tower0 {
+    position: relative;
+    height: 120px;
+    width: 150px;
+    background-color: gray;
+    float: left;
+    margin-right: 20px;
+  }
+
+  .tower1 {
+    position: relative;
+    height: 120px;
+    width: 150px;
+    background-color: gray;
+    float: left;
+    margin-right: 20px;
+  }
+
+  .tower2 {
+    position: relative;
+    height: 120px;
+    width: 150px;
+    background-color: gray;
+    float: left;
+  }
+
+  .get_from_tower {
+    clear: both;
+  }
+
+
+
+  </style>
+
+
+</head>
+<body>
+  <!-- load jquery and our scripts -->
+  <script type="text/javascript" src="jquery-1.9.1.js"></script>
+  <script type="text/javascript" src="hanoi.js"></script>
+
+  <h1>Towers of Hanoi</h1>
+
+
+  <!-- make three uls with 5 inline items each.
+    Assume for now that your player is playing with
+    four blocks (plus the base) -->
+
+    <ul class="tower0">
+      <li id="tow0row4"></li>
+      <li id="tow0row3"></li>
+      <li id="tow0row2"></li>
+      <li id="tow0row1"></li>
+      <li id="tow0row0"></li>
+    </ul>
+
+    <ul class="tower1">
+      <li id="tow1row4"></li>
+      <li id="tow1row3"></li>
+      <li id="tow1row2"></li>
+      <li id="tow1row1"></li>
+      <li id="tow1row0"></li>
+    </ul>
+
+    <ul class="tower2">
+      <li id="tow2row4"></li>
+      <li id="tow2row3"></li>
+      <li id="tow2row2"></li>
+      <li id="tow2row1"></li>
+      <li id="tow2row0"></li>
+    </ul>
+
+
+
+</body>
+</html>
+
