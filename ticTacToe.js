@@ -80,6 +80,12 @@ TicTacToe.prototype.winCondition = function() {
 
 
 
+// UI/Game Stuff
+
+TicTacToe.prototype.halfMove = function() {
+
+}
+
 
 
 
